@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a146ece4f7549aa8b0d03b0a273baa, type: 3}
+  m_Name: CommandoData
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  maxCapacity: 0
+  fireCooldown: 0
+  reloadTimer: 0
+  ammoType: 0
+  ammoChild: {fileID: 0}
