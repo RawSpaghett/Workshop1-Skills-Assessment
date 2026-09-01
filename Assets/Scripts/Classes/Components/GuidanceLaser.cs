@@ -15,6 +15,11 @@ public class GuidanceLaser : MonoBehaviour
         parentObject = this.gameObject; //parent weapon
     }
 
+    void Update()
+    {
+        ShootLaser();
+    }
+
     void FixedUpdate()
     {
         if(Physics.Raycast(parentObject.transform.position,parentObject.transform.forward,out target,raycastLength,layerMask)) //if hit
@@ -25,7 +30,6 @@ public class GuidanceLaser : MonoBehaviour
         {
             vectorTarget = transform.position + (parentObject.transform.forward * raycastLength);
         }
-        ShootLaser();
     }
 
     public void ShootLaser()

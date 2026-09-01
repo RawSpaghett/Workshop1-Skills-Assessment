@@ -15,6 +15,6 @@ MonoBehaviour:
   collisionDamage: 1
   explosionDamage: 1
   explosionRadius: 1
-  forwardAcceleration: 0.1
-  turnRate: 10
+  forwardAcceleration: 10
+  turnRate: 1000
   target: {x: 0, y: 0, z: 0}

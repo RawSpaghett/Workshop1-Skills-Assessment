@@ -3,8 +3,8 @@ using UnityEngine;
 public class Commando: WeaponBase
 {
     [SerializeField] private GuidanceLaser laser;
-
-    [SerializeField] public GameObject[] magazine;
+    [SerializeField] private GameObject missilePrefab;
+    [SerializeField] private Transform launchpoint;
     
     public override void PrimaryFire()
     {

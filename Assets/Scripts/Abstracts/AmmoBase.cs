@@ -7,14 +7,17 @@ public abstract class AmmoBase: MonoBehaviour
     //Ammo stats
     public AmmoData ammoData;
     protected Rigidbody rb;
-    private bool isFired = false;
+    private bool isFired = true;
 
     //Methods
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        transform.SetParent(null);
+        /*
         rb.detectCollisions = false;
         rb.isKinematic = true;
+        */
     }
 
     public virtual void ProjectileMovement()
