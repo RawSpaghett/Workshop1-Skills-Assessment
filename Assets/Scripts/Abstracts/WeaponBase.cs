@@ -20,7 +20,7 @@ public abstract class WeaponBase: MonoBehaviour, IWeapon
         
     }
     
-    public void Reload()//R
+    public virtual void Reload()//R
     {
         
     } 

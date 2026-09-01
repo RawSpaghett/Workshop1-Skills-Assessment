@@ -9,7 +9,6 @@ public class AmmoData : ScriptableObject
     [SerializeField] private float explosionRadius = 0;
     [SerializeField] private float forwardAcceleration;
     [SerializeField] private float turnRate;
-    public Vector3 target;
 
     //getters
     public float CollisionDamage => collisionDamage;

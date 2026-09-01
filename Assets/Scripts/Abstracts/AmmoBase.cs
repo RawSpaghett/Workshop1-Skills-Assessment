@@ -5,19 +5,18 @@ public enum EAmmoType{Missile};
 public abstract class AmmoBase: MonoBehaviour
 {
     //Ammo stats
-    public AmmoData ammoData;
+    [SerializeField] protected AmmoData ammoData;
     protected Rigidbody rb;
-    private bool isFired = true;
+    protected bool isFired = false;
 
     //Methods
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        transform.SetParent(null);
-        /*
+
         rb.detectCollisions = false;
         rb.isKinematic = true;
-        */
+        //Fire();
     }
 
     public virtual void ProjectileMovement()
@@ -38,6 +37,8 @@ public abstract class AmmoBase: MonoBehaviour
     {
         isFired = true;
         transform.SetParent(null);
+        rb.detectCollisions = true;
+        rb.isKinematic = false;
     }
 
     public virtual void OnCollisionEnter(Collision collision)
