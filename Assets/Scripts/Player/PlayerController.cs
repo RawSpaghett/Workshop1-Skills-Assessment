@@ -18,25 +18,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject UICanvas;
     private bool UISwitch = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
+    //movement
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
         Debug.Log($"Move Input: {moveInput}");
     }
 
+    //UI
     public void OnPopup(InputAction.CallbackContext context)
     {
         if(context.started)
         {
             if(UICanvas.activeSelf) UICanvas.SetActive(false);
             else UICanvas.SetActive(true);
-            
+
             if(context.control.name == "o")
             {
                 PText.SetActive(false);
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Vector3 move = new Vector3(moveInput.x,0,moveInput.y);

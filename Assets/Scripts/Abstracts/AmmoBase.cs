@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public enum EAmmoType{Missile};
 
@@ -6,22 +7,23 @@ public abstract class AmmoBase: MonoBehaviour
     //Ammo stats
     public AmmoData ammoData;
     protected Rigidbody rb;
-    private bool isFired = true;
+    private bool isFired = false;
 
     //Methods
-    void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        transform.SetParent(null);
+        rb.detectCollisions = false;
+        rb.isKinematic = true;
     }
 
     public virtual void ProjectileMovement()
     {
         //send missile forward via rigidbody
-        rb.AddForce(transform.forward * ammoData.ForwardAcceleration,ForceMode.Force);
+        rb.AddRelativeForce(Vector3.forward * ammoData.ForwardAcceleration,ForceMode.Force);
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(isFired)
         {
@@ -37,8 +39,9 @@ public abstract class AmmoBase: MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        //damage
-        //return object to pool
+        
+        isFired = false;
+        
     }
 
 
