@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missile: AmmoBase
@@ -26,6 +27,7 @@ public class Missile: AmmoBase
     void OnDisable()
     {
         rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         isFired = false;
     }
 
@@ -34,10 +36,12 @@ public class Missile: AmmoBase
         
         Vector3 targetDirection = (laser.vectorTarget - transform.position).normalized;
         Vector3 turnAxis = Vector3.Cross(transform.forward, targetDirection);
-        
-
         rb.AddTorque((turnAxis * ammoData.TurnRate) - (rb.angularVelocity * 5f), ForceMode.Acceleration);
-        
+    }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        this.gameObject.SetActive(false); //disable
     }
 
 }

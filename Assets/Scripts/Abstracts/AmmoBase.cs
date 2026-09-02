@@ -16,10 +16,9 @@ public abstract class AmmoBase: MonoBehaviour
 
         rb.detectCollisions = false;
         rb.isKinematic = true;
-        //Fire();
     }
 
-    public virtual void ProjectileMovement()
+    protected virtual void ProjectileMovement() //forward movement
     {
         //send missile forward via rigidbody
         rb.AddRelativeForce(Vector3.forward * ammoData.ForwardAcceleration,ForceMode.Force);
@@ -41,12 +40,8 @@ public abstract class AmmoBase: MonoBehaviour
         rb.isKinematic = false;
     }
 
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        
-        isFired = false;
-        
-    }
+    protected abstract void OnCollisionEnter(Collision collision);
+    
 
 
 

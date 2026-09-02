@@ -11,17 +11,8 @@ public abstract class WeaponBase: MonoBehaviour, IWeapon
     }
 
     //interface methods
-    public virtual void PrimaryFire()//LMB
-    {
-        //call fire command on ammo
-    } 
-    public virtual void SecondaryFire()
-    {
-        
-    }
-    
-    public virtual void Reload()//R
-    {
-        
-    } 
+    public abstract void PrimaryFire(); //lmb
+    public abstract void SecondaryFire(); //rmb
+
+    public abstract void Reload(); //r
 }

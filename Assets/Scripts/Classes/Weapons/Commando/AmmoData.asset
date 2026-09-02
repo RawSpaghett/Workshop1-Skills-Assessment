@@ -16,4 +16,4 @@ MonoBehaviour:
   explosionDamage: 1
   explosionRadius: 1
   forwardAcceleration: 10
-  turnRate: 15
+  turnRate: 10

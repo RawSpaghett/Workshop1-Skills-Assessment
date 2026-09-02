@@ -61,14 +61,19 @@ public class PlayerController : MonoBehaviour
         {
             if(context.control.name == "r")
             {
-                commando.Reset();
-                Debug.Log("Commando.Reset() via OnReload");
+                commando.Reload();
+                Debug.Log("Commando.Reset() via OnWeapon");
             }
 
             if(context.control.name == "leftButton")
             {
                 commando.PrimaryFire();
-                Debug.Log("Primary fire via OnReload");
+                Debug.Log("Primary fire via OnWeapon");
+            }
+            if(context.control.name == "rightButton")
+            {
+                commando.SecondaryFire();
+                Debug.Log("Secondary fire via OnWeapon");
             }
         }
     }

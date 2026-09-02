@@ -7,7 +7,9 @@ public class Commando: WeaponBase
     [SerializeField] private GameObject missilePrefab; //the missile prefab
     [SerializeField] private GameObject[] missiles;
     [SerializeField] private GameObject[] launchpoints; //where missiles are called to
+    // unimplemented [SerializeField] private WeaponData commandoData;
     private int launchOrder = 0;
+    private bool Switch = true;
     
 
     public void Awake()
@@ -22,18 +24,6 @@ public class Commando: WeaponBase
         }
     }
 
-    public void Reset()
-    {
-        for(int i = 0; i <= 3; i++)
-        {
-            missiles[i].SetActive(false);
-            missiles[i].transform.position = launchpoints[i].transform.position;
-            missiles[i].transform.SetParent(this.GameObject().transform);
-            missiles[i].SetActive(true);
-        }
-        launchOrder = 0;
-    }
-
     public override void PrimaryFire()
     {
         if(launchOrder <= 4)
@@ -45,17 +35,25 @@ public class Commando: WeaponBase
             }
             launchOrder++;
         };
-    
     }
 
     public override void SecondaryFire()
     {
-        
+        Switch = !Switch;
+        laser.GameObject().SetActive(Switch);
     }
 
     public override void Reload()
     {
-        Reset();
+        for(int i = 0; i <= 3; i++)
+        {
+            missiles[i].SetActive(false);
+            missiles[i].transform.position = launchpoints[i].transform.position;
+            missiles[i].transform.rotation = launchpoints[i].transform.rotation;
+            missiles[i].transform.SetParent(this.GameObject().transform);
+            missiles[i].SetActive(true);
+        }
+        launchOrder = 0;
     }
     
 }

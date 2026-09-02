@@ -164,6 +164,17 @@
                     "action": "Weapons",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2716354-f122-4258-bb7f-86eff944bd68",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Weapons",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
