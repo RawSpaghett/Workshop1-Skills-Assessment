@@ -7,15 +7,15 @@ public class GuidanceLaser : MonoBehaviour
     public Vector3 vectorTarget {get;private set;}
     private LayerMask layerMask;
     private GameObject parentObject;
-    [SerializeField] private float raycastLength = 1000f;
+    [SerializeField] private float raycastLength = 200f;
     [SerializeField] private LineRenderer laserVisual;
     void Awake()
     {
-        layerMask = LayerMask.GetMask(""); //Environment layers here
+        layerMask = LayerMask.GetMask("Floor"); //Environment layers here
         parentObject = this.gameObject; //parent weapon
     }
 
-    void Update()
+    void LateUpdate()
     {
         ShootLaser();
     }

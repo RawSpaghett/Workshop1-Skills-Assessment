@@ -7,6 +7,7 @@ public class Commando: WeaponBase
     [SerializeField] private GameObject missilePrefab; //the missile prefab
     [SerializeField] private GameObject[] missiles;
     [SerializeField] private GameObject[] launchpoints; //where missiles are called to
+    private int launchOrder = 0;
     
 
     public void Awake()
@@ -14,7 +15,7 @@ public class Commando: WeaponBase
         missiles = new GameObject[4];
         for(int i = 0; i <= 3; i++)
         {
-            missiles[i] = Instantiate(missilePrefab,launchpoints[i].transform.position,this.GameObject().transform.rotation,this.GameObject().transform);
+            missiles[i] = Instantiate(missilePrefab,launchpoints[i].transform.position,Quaternion.identity,this.GameObject().transform);
             missiles[i].SetActive(true);
             missiles[i].GetComponent<Missile>().laser = laser; //link to laser
             Debug.Log($"creating missile #{i}");
@@ -33,7 +34,15 @@ public class Commando: WeaponBase
 
     public override void PrimaryFire()
     {
-        //call fire command on missiles in order
+        if(launchOrder >= 4)
+        {
+            Missile fire = missiles[launchOrder].GetComponent<Missile>();
+            if (fire != null)
+            {
+                fire.Fire();
+            }
+        };
+    
     }
 
     public override void SecondaryFire()
@@ -43,7 +52,7 @@ public class Commando: WeaponBase
 
     public override void Reload()
     {
-        
+        Reset();
     }
     
 }

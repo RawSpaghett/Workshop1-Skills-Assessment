@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float gravity = -9.8f; //earth
+    [SerializeField] private Commando commando;
 
     //Movement  
     private CharacterController controller;
@@ -49,12 +50,32 @@ public class PlayerController : MonoBehaviour
                 PText.SetActive(true);
             }
         }
+        
+    }
+
+    //Missile
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            if(context.control.name == "r")
+            {
+                commando.Reset();
+                Debug.Log("Commando.Reset() via OnReload");
+            }
+
+            if(context.control.name == "LeftButton")
+            {
+                commando.PrimaryFire();
+            }
+        }
     }
 
 
     void Update()
     {
-        Vector3 move = new Vector3(moveInput.x,0,moveInput.y);
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * speed * Time.deltaTime);
     }
 }
