@@ -2051,7 +2051,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1839451801}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnReload
+        m_MethodName: OnWeapon
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

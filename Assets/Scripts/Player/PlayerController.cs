@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     //Missile
 
-    public void OnReload(InputAction.CallbackContext context)
+    public void OnWeapon(InputAction.CallbackContext context)
     {
         if(context.started)
         {
@@ -65,9 +65,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Commando.Reset() via OnReload");
             }
 
-            if(context.control.name == "LeftButton")
+            if(context.control.name == "leftButton")
             {
                 commando.PrimaryFire();
+                Debug.Log("Primary fire via OnReload");
             }
         }
     }

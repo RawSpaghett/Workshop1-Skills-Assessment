@@ -28,19 +28,22 @@ public class Commando: WeaponBase
         {
             missiles[i].SetActive(false);
             missiles[i].transform.position = launchpoints[i].transform.position;
+            missiles[i].transform.SetParent(this.GameObject().transform);
             missiles[i].SetActive(true);
         }
+        launchOrder = 0;
     }
 
     public override void PrimaryFire()
     {
-        if(launchOrder >= 4)
+        if(launchOrder <= 4)
         {
             Missile fire = missiles[launchOrder].GetComponent<Missile>();
             if (fire != null)
             {
                 fire.Fire();
             }
+            launchOrder++;
         };
     
     }
